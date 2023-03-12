@@ -34,6 +34,12 @@ export class App extends Component {
   };
 
   render() {
+    const { contacts, filter } = this.state;
+
+    const formattedFilter = filter.toLowerCase();
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(formattedFilter)
+    );
     return (
       <section>
         <div>
@@ -41,7 +47,7 @@ export class App extends Component {
           <ContactForm createContact={this.createContact} />
           <h2>Contacts</h2>
           <Filter createFilterData={this.createFilterData} />
-          <ContactList contacts={this.state.contacts} />
+          <ContactList contacts={filteredContacts} />
         </div>
       </section>
     );
