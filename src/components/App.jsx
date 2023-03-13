@@ -16,8 +16,6 @@ export class App extends Component {
   };
 
   createContact = data => {
-    console.log(data);
-
     this.setState(() => {
       if (
         this.state.contacts.find(
@@ -48,7 +46,6 @@ export class App extends Component {
 
   render() {
     const { contacts, filter } = this.state;
-
     const formattedFilter = filter.toLowerCase();
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(formattedFilter)

@@ -1,7 +1,8 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+
 export class Filter extends Component {
   handleChange = ({ target }) => {
-    // this.setState({ [target.name]: target.value });
     this.props.createFilterData({ filter: target.value });
   };
 
@@ -19,3 +20,7 @@ export class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  createFilterData: PropTypes.func.isRequired,
+};
