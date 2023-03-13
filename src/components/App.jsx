@@ -13,20 +13,33 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   createContact = data => {
     console.log(data);
+
     this.setState(() => {
-      return {
-        contacts: [
-          { id: nanoid(), name: data.name, number: data.number },
-          ...this.state.contacts,
-        ],
-      };
+      if (
+        this.state.contacts.find(
+          contact => contact.name.toLowerCase() === data.name.toLowerCase()
+        )
+      ) {
+        alert(`${data.name} is alredy in contacts`);
+      } else {
+        return {
+          contacts: [
+            { id: nanoid(), name: data.name, number: data.number },
+            ...this.state.contacts,
+          ],
+        };
+      }
     });
+  };
+
+  deleteUser = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contacts => contacts.id !== id),
+    }));
   };
 
   createFilterData = data => {
@@ -47,7 +60,7 @@ export class App extends Component {
           <ContactForm createContact={this.createContact} />
           <h2>Contacts</h2>
           <Filter createFilterData={this.createFilterData} />
-          <ContactList contacts={filteredContacts} />
+          <ContactList contacts={filteredContacts} onDelete={this.deleteUser} />
         </div>
       </section>
     );

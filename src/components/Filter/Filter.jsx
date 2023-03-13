@@ -1,7 +1,7 @@
 import { Component } from 'react';
 export class Filter extends Component {
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
+    // this.setState({ [target.name]: target.value });
     this.props.createFilterData({ filter: target.value });
   };
 
