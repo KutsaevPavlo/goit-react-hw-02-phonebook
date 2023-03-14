@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { StyledFilter } from './Filter.styled';
 
 export class Filter extends Component {
   handleChange = ({ target }) => {
@@ -8,7 +9,7 @@ export class Filter extends Component {
 
   render() {
     return (
-      <label>
+      <StyledFilter>
         Find contacts by name
         <input
           type="text"
@@ -16,7 +17,7 @@ export class Filter extends Component {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           onChange={this.handleChange}
         />
-      </label>
+      </StyledFilter>
     );
   }
 }

@@ -1,9 +1,10 @@
 import { Contact } from 'components/Contact/Contact';
 import PropTypes from 'prop-types';
+import { StyledContactList } from './ContactList.styled';
 
 export const ContactList = ({ contacts, onDelete }) => {
   return (
-    <ul className="">
+    <StyledContactList>
       {contacts.map(({ id, name, number }) => (
         <Contact
           key={id}
@@ -13,7 +14,7 @@ export const ContactList = ({ contacts, onDelete }) => {
           id={id}
         />
       ))}
-    </ul>
+    </StyledContactList>
   );
 };
 
