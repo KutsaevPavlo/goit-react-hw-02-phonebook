@@ -1,6 +1,12 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import {
+  StyledForm,
+  StyledFormLabel,
+  StyledFormInput,
+  StyledFormBtm,
+} from './ContactForm.styled';
 
 export class ContactForm extends Component {
   state = {
@@ -24,10 +30,10 @@ export class ContactForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <StyledForm onSubmit={this.handleSubmit}>
+        <StyledFormLabel>
           Name
-          <input
+          <StyledFormInput
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -37,10 +43,10 @@ export class ContactForm extends Component {
             value={this.state.name}
             id={this.loginInputId}
           />
-        </label>
-        <label>
+        </StyledFormLabel>
+        <StyledFormLabel>
           Number
-          <input
+          <StyledFormInput
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -50,9 +56,9 @@ export class ContactForm extends Component {
             value={this.state.number}
             id={this.loginInputId}
           />
-        </label>
-        <button type="submit">Add</button>
-      </form>
+        </StyledFormLabel>
+        <StyledFormBtm type="submit">Add</StyledFormBtm>
+      </StyledForm>
     );
   }
 }
