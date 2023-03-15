@@ -45,6 +45,10 @@ export class App extends Component {
     this.setState(data);
   };
 
+  handleChange = ({ target }) => {
+    this.createFilterData({ filter: target.value });
+  };
+
   render() {
     const { contacts, filter } = this.state;
     const formattedFilter = filter.toLowerCase();
@@ -57,7 +61,10 @@ export class App extends Component {
           <StyledTitel>Phonebook</StyledTitel>
           <ContactForm createContact={this.createContact} />
           <StyledContac>Contacts</StyledContac>
-          <Filter createFilterData={this.createFilterData} />
+          <Filter
+            createFilterData={this.createFilterData}
+            handleChange={this.handleChange}
+          />
           <ContactList contacts={filteredContacts} onDelete={this.deleteUser} />
         </div>
       </section>

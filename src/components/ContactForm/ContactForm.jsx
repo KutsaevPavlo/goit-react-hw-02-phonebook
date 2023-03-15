@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import {
   StyledForm,
@@ -14,8 +13,6 @@ export class ContactForm extends Component {
     name: '',
   };
 
-  loginInputId = nanoid();
-
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   };
@@ -26,6 +23,11 @@ export class ContactForm extends Component {
       name: this.state.name,
       number: this.state.number,
     });
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -41,7 +43,6 @@ export class ContactForm extends Component {
             required
             onChange={this.handleChange}
             value={this.state.name}
-            id={this.loginInputId}
           />
         </StyledFormLabel>
         <StyledFormLabel>
@@ -54,7 +55,6 @@ export class ContactForm extends Component {
             required
             onChange={this.handleChange}
             value={this.state.number}
-            id={this.loginInputId}
           />
         </StyledFormLabel>
         <StyledFormBtm type="submit">Add</StyledFormBtm>
