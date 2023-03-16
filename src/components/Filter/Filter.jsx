@@ -18,5 +18,5 @@ export function Filter({ handleChange }) {
 }
 
 Filter.propTypes = {
-  createFilterData: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
